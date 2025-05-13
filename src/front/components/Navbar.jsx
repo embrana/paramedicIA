@@ -23,16 +23,16 @@ export const Navbar = () => {
 								Base de Conocimiento
 							</Link>
 						</li>
-						<li className="nav-item">
+						{/* <li className="nav-item">
 							<Link to="/home" className="nav-link">
 								Inicio
 							</Link>
-						</li>
-						<li className="nav-item">
+						</li> */}
+						{/* <li className="nav-item">
 							<Link to="/demo" className="nav-link">
 								Demo
 							</Link>
-						</li>
+						</li> */}
 					</ul>
 				</div>
 			</div>
