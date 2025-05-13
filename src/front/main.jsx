@@ -5,6 +5,12 @@ import { RouterProvider } from "react-router-dom";  // Import RouterProvider to 
 import { router } from "./routes";  // Import the router configuration
 import { StoreProvider } from './hooks/useGlobalReducer';  // Import the StoreProvider for global state management
 import { BackendURL } from './components/BackendURL';
+// Import Bootstrap CSS
+import 'bootstrap/dist/css/bootstrap.min.css';
+// Import Bootstrap Icons
+import 'bootstrap-icons/font/bootstrap-icons.css';
+// Import Bootstrap JavaScript
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 const Main = () => {
     

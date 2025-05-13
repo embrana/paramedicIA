@@ -68,5 +68,18 @@ def serve_any_other_file(path):
 
 # this only runs if `$ python src/main.py` is executed
 if __name__ == '__main__':
+    # Verificar que todas las dependencias estén instaladas
+    try:
+        import openai
+        print(f"Dependencia OpenAI instalada: versión {openai.__version__}")
+    except ImportError:
+        print("ERROR: La dependencia 'openai' no está instalada. Por favor ejecuta:")
+        print("  pip install openai")
+        print("  o")
+        print("  pipenv install openai")
+        exit(1)
+        
+    print("Iniciando servidor de emergencias médicas...")
     PORT = int(os.environ.get('PORT', 3001))
+    print(f"Servidor disponible en http://localhost:{PORT}")
     app.run(host='0.0.0.0', port=PORT, debug=True)

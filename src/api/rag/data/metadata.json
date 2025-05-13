@@ -1,0 +1,76 @@
+{
+  "documents": [
+    {
+      "id": "f11bef908cad10ddcf6bba166d761902",
+      "title": "RCP Adulto",
+      "source": "Categoría: Soporte Vital Básico",
+      "chunk_count": 1,
+      "chunk_ids": [
+        "f11bef908cad10ddcf6bba166d761902_chunk_0"
+      ]
+    },
+    {
+      "id": "54e3dc08fd39e1e0f8bdb31f33559089",
+      "title": "Convulsión en Progreso",
+      "source": "Categoría: Neurológico",
+      "chunk_count": 1,
+      "chunk_ids": [
+        "54e3dc08fd39e1e0f8bdb31f33559089_chunk_0"
+      ]
+    },
+    {
+      "id": "2c734d6de8ca16e8d363289331f4ce81",
+      "title": "Hemorragia Externa Grave",
+      "source": "Categoría: Control de Hemorragias",
+      "chunk_count": 1,
+      "chunk_ids": [
+        "2c734d6de8ca16e8d363289331f4ce81_chunk_0"
+      ]
+    },
+    {
+      "id": "104da186d7f7649f2efaaf64d1f73490",
+      "title": "Obstrucción Vía Aérea Adulto",
+      "source": "Categoría: Vía Aérea",
+      "chunk_count": 1,
+      "chunk_ids": [
+        "104da186d7f7649f2efaaf64d1f73490_chunk_0"
+      ]
+    },
+    {
+      "id": "0820d69e8f5de4e983f52ece8706c3bc",
+      "title": "Quemadura Térmica Grave",
+      "source": "Categoría: Trauma - Quemaduras",
+      "chunk_count": 1,
+      "chunk_ids": [
+        "0820d69e8f5de4e983f52ece8706c3bc_chunk_0"
+      ]
+    }
+  ],
+  "chunk_to_doc": {
+    "f11bef908cad10ddcf6bba166d761902_chunk_0": {
+      "doc_id": "f11bef908cad10ddcf6bba166d761902",
+      "chunk_index": 0,
+      "text": "1. Verificar seguridad de la escena.\n2. Confirmar inconsciencia y ausencia de respiración normal.\n3. Llamar a emergencias.\n4. Iniciar compresiones torácicas: ritmo 100-120/min, profundidad 5-6 cm en el centro del pecho.\n5. Si capacitado, realizar 2 ventilaciones cada 30 compresiones.\nNota: Continuar hasta llegada de ayuda o recuperación del paciente.\n\nAdvertencia: No detener compresiones hasta llegada de ayuda."
+    },
+    "54e3dc08fd39e1e0f8bdb31f33559089_chunk_0": {
+      "doc_id": "54e3dc08fd39e1e0f8bdb31f33559089",
+      "chunk_index": 0,
+      "text": "1. Proteger la cabeza del paciente y evitar que se golpee.\n2. No restringir movimientos.\n3. No introducir objetos en la boca.\n4. Controlar el tiempo de la convulsión.\n5. Si dura más de 5 minutos o se repite: activar emergencia.\n6. Una vez finalizada: colocar en posición lateral de seguridad.\n\nAdvertencia: Consultar si el paciente tiene antecedentes epilépticos tras el evento."
+    },
+    "2c734d6de8ca16e8d363289331f4ce81_chunk_0": {
+      "doc_id": "2c734d6de8ca16e8d363289331f4ce81",
+      "chunk_index": 0,
+      "text": "1. Colocar guantes.\n2. Aplicar presión directa sobre la herida con apósito estéril o tela limpia.\n3. Si la hemorragia continúa, añadir más apósitos sin retirar los anteriores.\n4. Elevar el miembro afectado si es posible.\n5. No retirar objetos incrustados; inmovilizarlos.\n6. Trasladar de urgencia o esperar unidad móvil.\n\nAdvertencia: No retirar objetos clavados en la herida."
+    },
+    "104da186d7f7649f2efaaf64d1f73490_chunk_0": {
+      "doc_id": "104da186d7f7649f2efaaf64d1f73490",
+      "chunk_index": 0,
+      "text": "1. Preguntar si puede hablar o toser.\n2. Si no puede: aplicar maniobra de Heimlich (compresiones abdominales).\n3. Repetir hasta desobstrucción o pérdida de conciencia.\n4. Si inconsciente: iniciar RCP y pedir asistencia avanzada.\n\nAdvertencia: No aplicar si paciente está embarazado o con obesidad severa (uso alternativo de compresiones torácicas)."
+    },
+    "0820d69e8f5de4e983f52ece8706c3bc_chunk_0": {
+      "doc_id": "0820d69e8f5de4e983f52ece8706c3bc",
+      "chunk_index": 0,
+      "text": "1. Detener la causa (retirar fuente de calor).\n2. Evaluar área afectada.\n3. Cubrir quemadura con apósito estéril húmedo o tela limpia.\n4. No aplicar cremas, hielo ni romper ampollas.\n5. Controlar signos vitales.\n6. Transportar urgentemente si afecta cara, vías respiratorias, manos, genitales o es >10% superficie corporal.\n\nAdvertencia: No aplicar sustancias no estériles en la quemadura."
+    }
+  }
+}
