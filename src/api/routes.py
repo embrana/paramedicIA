@@ -2,6 +2,7 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 import os
+import uuid
 from flask import Flask, request, jsonify, url_for, Blueprint
 from api.models import db, User
 from api.utils import generate_sitemap, APIException
@@ -9,6 +10,7 @@ from flask_cors import CORS
 from openai import OpenAI
 from api.rag import embeddings_manager
 from api.rag.routes import rag_api
+from api.conversation_manager import get_conversation, save_conversation, generate_session_id
 
 api = Blueprint('api', __name__)
 
@@ -43,10 +45,21 @@ def handle_chat():
         return jsonify({"error": "No message provided"}), 400
     
     user_message = data.get('message')
+    session_id = data.get('session_id', generate_session_id())
     
     try:
-        print(f"Sending message to OpenAI: {user_message}")
-        print(f"API Key used: {openai_client.api_key[:6]}...{openai_client.api_key[-4:]}")
+        print(f"Procesando mensaje para sesión: {session_id}")
+        print(f"Mensaje del usuario: {user_message}")
+        print(f"API Key utilizada: {openai_client.api_key[:6]}...{openai_client.api_key[-4:]}")
+        
+        # Recuperar o crear historial de conversación
+        conversation = get_conversation(session_id)
+        
+        # Añadir mensaje del usuario al historial
+        conversation['messages'].append({
+            "role": "user",
+            "content": user_message
+        })
         
         # Buscar contexto relevante en la base de datos RAG
         relevant_context = ""
@@ -70,33 +83,39 @@ def handle_chat():
             print(f"Error al buscar en la base RAG: {str(rag_error)}")
             # No bloqueamos la ejecución, simplemente continuamos sin contexto RAG
         
-        # Construcción del sistema de mensaje
-        system_message = "Eres un asistente de IA especializado en soporte a operadores médicos de campo para emergencias. Tu función es responder consultas con precisión, usando una base de datos RAG con manuales de emergencia, protocolos médicos y guías actualizadas.\nDirectivas:\nPrecisión: Extrae información únicamente de la base RAG. Si no hay datos relevantes, indica que se consulte a un supervisor médico. Siempre entrega los pasos de la base de RAG exactos sin modificaciones ademas asegurate que siempre indicas que llame al 911.\nContexto de emergencia: Usa lenguaje claro, conciso y profesional, optimizado para entornos de alta presión.\nEstructura: Presenta respuestas en pasos numerados o listas cuando sea aplicable.\nSeguridad: Prioriza protocolos que protejan al paciente. Advierte sobre procedimientos de alto riesgo que requieran supervisión.\nLimitaciones: No diagnostiques ni decidas clínicamente. Limítate a información de apoyo. Indica si la consulta excede el alcance de la base RAG.\nTono: Profesional, empático, directo.\nConsulta RAG: Busca datos actuales y relevantes en la base. Selecciona la fuente alineada con protocolos médicos estándar.\nEjemplo:\nConsulta: \"Pasos RCP adulto.\"\nRespuesta: Per manuales RAG:\nVerificar seguridad.\nConfirmar inconsciencia y ausencia de respiración normal.\nLlamar emergencia.\nCompresiones torácicas: 100-120/min, 5-6 cm profundidad, centro pecho.\nVentilaciones (si capacitado): 2 cada 30 compresiones.\nNota: Continuar hasta llegada de ayuda o respuesta del paciente."
+        # Si tenemos contexto relevante y el primer mensaje es system, lo actualizamos
+        if relevant_context and conversation['messages'][0]['role'] == 'system':
+            system_content = conversation['messages'][0]['content']
+            conversation['messages'][0]['content'] = f"{system_content}\n\n{relevant_context}\n\nIMPORTANTE: Utiliza específicamente la información proporcionada en los documentos anteriores para responder a la consulta del usuario. Cita la fuente de la información. Si la información no es suficiente para responder completamente, indica qué información falta y sugiere consultar con un supervisor."
         
-        # Si tenemos contexto relevante, lo agregamos al mensaje del sistema
-        if relevant_context:
-            system_message += f"\n\n{relevant_context}"
-            
-            # Y pedimos específicamente que use la información RAG
-            system_message += "\n\nIMPORTANTE: Utiliza específicamente la información proporcionada en los documentos anteriores para responder a la consulta del usuario. Cita la fuente de la información. Si la información no es suficiente para responder completamente, indica qué información falta y sugiere consultar con un supervisor médico."
-            
-        # Send message to OpenAI API
+        # Construir el array de mensajes para OpenAI
+        messages = conversation['messages'].copy()
+        
+        # Enviar todos los mensajes a OpenAI
+        print(f"Enviando {len(messages)} mensajes a OpenAI")
         response = openai_client.chat.completions.create(
-            model="gpt-3.5-turbo", # Usando un modelo más común para probar
-            messages=[
-                {"role": "system", "content": system_message},
-                {"role": "user", "content": user_message}
-            ],
+            model="gpt-3.5-turbo",
+            messages=messages,
             temperature=0.2,
             max_tokens=1000
         )
         
-        # Extract assistant's response
+        # Extraer respuesta del asistente
         ai_response = response.choices[0].message.content
-        print(f"Received response from OpenAI: {ai_response[:100]}...")
+        print(f"Respuesta recibida de OpenAI: {ai_response[:100]}...")
+        
+        # Añadir respuesta al historial
+        conversation['messages'].append({
+            "role": "assistant",
+            "content": ai_response
+        })
+        
+        # Guardar conversación actualizada
+        save_conversation(session_id, conversation)
         
         return jsonify({
             "response": ai_response,
+            "session_id": session_id,
             "rag_used": relevant_context != ""
         }), 200
         
