@@ -44,6 +44,24 @@
       "chunk_ids": [
         "0820d69e8f5de4e983f52ece8706c3bc_chunk_0"
       ]
+    },
+    {
+      "id": "2f681a531a5800e79bd73b48e908795e",
+      "title": "Herida de Bala",
+      "source": "Manual de Trauma Prehospitalario Avanzado 2022",
+      "chunk_count": 1,
+      "chunk_ids": [
+        "2f681a531a5800e79bd73b48e908795e_chunk_0"
+      ]
+    },
+    {
+      "id": "6367c9fcb712fb193554bacc311dd7ae",
+      "title": "Reacción Alérgica Severa (Anafilaxia)",
+      "source": "Guía de Emergencias Médicas SEMM 2023",
+      "chunk_count": 1,
+      "chunk_ids": [
+        "6367c9fcb712fb193554bacc311dd7ae_chunk_0"
+      ]
     }
   ],
   "chunk_to_doc": {
@@ -71,6 +89,16 @@
       "doc_id": "0820d69e8f5de4e983f52ece8706c3bc",
       "chunk_index": 0,
       "text": "1. Detener la causa (retirar fuente de calor).\n2. Evaluar área afectada.\n3. Cubrir quemadura con apósito estéril húmedo o tela limpia.\n4. No aplicar cremas, hielo ni romper ampollas.\n5. Controlar signos vitales.\n6. Transportar urgentemente si afecta cara, vías respiratorias, manos, genitales o es >10% superficie corporal.\n\nAdvertencia: No aplicar sustancias no estériles en la quemadura."
+    },
+    "2f681a531a5800e79bd73b48e908795e_chunk_0": {
+      "doc_id": "2f681a531a5800e79bd73b48e908795e",
+      "chunk_index": 0,
+      "text": "Protocolo para Herida por Arma de Fuego:\n1. Verificar que la escena sea segura antes de acercarse.\n2. Controlar hemorragias aplicando presión directa sobre la herida.\n3. Si es posible, usar vendaje compresivo o torniquete si la hemorragia es en una extremidad y no se detiene con presión.\n4. No retirar el proyectil ni intentar limpiar la herida profundamente.\n5. Mantener al paciente en reposo y abrigado.\n6. Evaluar signos vitales frecuentemente.\n7. Transportar de inmediato al centro de trauma más cercano."
+    },
+    "6367c9fcb712fb193554bacc311dd7ae_chunk_0": {
+      "doc_id": "6367c9fcb712fb193554bacc311dd7ae",
+      "chunk_index": 0,
+      "text": "Protocolo para Reacción Alérgica Severa:\n1. Identificar síntomas: dificultad para respirar, hinchazón de labios o cara, sarpullido, debilidad.\n2. Preguntar si el paciente tiene autoinyector de epinefrina (Ej: EpiPen).\n3. Si lo tiene, asistir en la aplicación en el muslo externo (puede ser a través de la ropa).\n4. Llamar inmediatamente al servicio de emergencia.\n5. Acostar al paciente con las piernas elevadas si no hay dificultad respiratoria severa.\n6. Controlar signos vitales y preparar RCP si pierde conciencia.\n7. Administrar una segunda dosis de epinefrina si los síntomas no mejoran en 5-10 minutos y hay una segunda unidad disponible."
     }
   }
 }

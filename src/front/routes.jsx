@@ -10,6 +10,7 @@ import { Home } from "./pages/Home";
 import { Single } from "./pages/Single";
 import { Demo } from "./pages/Demo";
 import { MedicalEmergency } from "./pages/MedicalEmergency";
+import { EmergenciaRealTime } from "./pages/EmergenciaRealTime";
 import { RagAdmin } from "./pages/RagAdmin";
 
 export const router = createBrowserRouter(
@@ -25,6 +26,7 @@ export const router = createBrowserRouter(
 
         {/* Nested Routes: Defines sub-routes within the BaseHome component. */}
         <Route path= "/" element={<MedicalEmergency />} />
+        <Route path="/emergencia-realtime" element={<EmergenciaRealTime />} />
         <Route path="/home" element={<Home />} />
         <Route path="/single/:theId" element={<Single />} />  {/* Dynamic route for single items */}
         <Route path="/demo" element={<Demo />} />

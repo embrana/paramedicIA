@@ -19,6 +19,11 @@ export const Navbar = () => {
 							</Link>
 						</li>
 						<li className="nav-item">
+							<Link to="/emergencia-realtime" className="nav-link">
+								Emergencias RealTime + RAG
+							</Link>
+						</li>
+						<li className="nav-item">
 							<Link to="/rag-admin" className="nav-link">
 								Base de Conocimiento
 							</Link>
